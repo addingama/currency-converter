@@ -32,7 +32,10 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["yarn run format-code", "git add"]
+    "*.js": [
+      "yarn run format-code",
+      "git add"
+    ]
   },
   "jest": {
     "preset": "jest-expo"
@@ -52,6 +55,6 @@
     "react-redux": "^5.0.4",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.1",
-    "redux-saga": "^0.15.3"
+    "redux-saga": "^0.16.0"
   }
 }
