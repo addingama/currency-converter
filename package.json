@@ -1,5 +1,5 @@
 {
-  "name": "agb_playground",
+  "name": "agb-currency-converter",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -32,10 +32,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "yarn run format-code",
-      "git add"
-    ]
+    "*.js": ["yarn run format-code", "git add"]
   },
   "jest": {
     "preset": "jest-expo"

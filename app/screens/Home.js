@@ -39,7 +39,6 @@ class Home extends Component {
   }
 
   handlePressBaseCurrency = () => {
-    console.log('press base');
     this.props.navigation.navigate('CurrencyList', {
       title: 'Base Currency',
       type: 'base',
@@ -62,7 +61,6 @@ class Home extends Component {
   };
 
   handleOptionsPress = () => {
-    console.log('handle option pressed');
     this.props.navigation.navigate('Options');
   };
 

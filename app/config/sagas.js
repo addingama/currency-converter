@@ -30,7 +30,6 @@ function* fetchLatestConversionRates(action) {
       yield put({ type: CONVERSION_RESULT, result });
     }
   } catch (e) {
-    console.log('saga error', e);
     yield put({ type: CONVERSION_ERROR, error: e.message });
   }
 }
