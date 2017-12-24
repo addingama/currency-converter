@@ -27,6 +27,7 @@ class Home extends Component {
     primaryColor: PropTypes.string,
     alertWithType: PropTypes.func,
     currencyError: PropTypes.string,
+    isConnected: PropTypes.bool,
   };
 
   componentWillMount() {
@@ -74,6 +75,14 @@ class Home extends Component {
     this.props.navigation.navigate('Options');
   };
 
+  handleDisconnectedPress = () => {
+    this.props.alertWithType(
+      'warn',
+      'Not connected to the Internet',
+      "Just a heads up that you're not connecred to the internet - some features may not work",
+    );
+  };
+
   render() {
     let quotePrice = (this.props.amount * this.props.conversionRate).toFixed(2);
     if (this.props.isFetching) {
@@ -82,7 +91,11 @@ class Home extends Component {
     return (
       <Container backgroundColor={this.props.primaryColor}>
         <StatusBar translucent={false} barStyle="light-content" />
-        <Header onPress={this.handleOptionsPress} />
+        <Header
+          onPress={this.handleOptionsPress}
+          isConnected={this.props.isConnected}
+          onWarningPress={this.handleDisconnectedPress}
+        />
         <KeyboardAvoidingView behavior="padding">
           <Logo tintColor={this.props.primaryColor} />
           <InputWithButton
@@ -127,6 +140,7 @@ const mapStateToProps = (state) => {
     lastConvertedDate: conversionSelector.date ? new Date(conversionSelector.date) : new Date(),
     primaryColor: state.theme.primaryColor,
     currencyError: state.currencies.error,
+    isConnected: state.network.connected,
   };
 };
 
