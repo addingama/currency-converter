@@ -61,7 +61,7 @@ const reducer = (state = INITIAL_STATE, action) => {
     case GET_INITIAL_CONVERSION:
       return {
         ...state,
-        conversion: setConversions(state, { currency: state.baseCurrency }),
+        conversions: setConversions(state, { currency: state.baseCurrency }),
       };
     case CONVERSION_RESULT:
       return {
