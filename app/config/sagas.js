@@ -1,4 +1,5 @@
 import { takeEvery, select, call, put } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 
 // 1. swap currency
 // 2. change base currency
@@ -43,8 +44,18 @@ function* fetchLatestConversionRates(action) {
   }
 }
 
+function* clearConversionError() {
+  const DELAY_SECONDS = 4;
+  const error = yield select(state => state.currencies.error);
+  if (error) {
+    yield delay(DELAY_SECONDS * 1000);
+    yield put({ type: CONVERSION_ERROR, error: null });
+  }
+}
+
 export default function* rootSaga() {
   yield takeEvery(GET_INITIAL_CONVERSION, fetchLatestConversionRates);
   yield takeEvery(SWAP_CURRENCY, fetchLatestConversionRates);
   yield takeEvery(CHANGE_BASE_CURRENCY, fetchLatestConversionRates);
+  yield takeEvery(CONVERSION_ERROR, clearConversionError);
 }
