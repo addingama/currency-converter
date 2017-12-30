@@ -1,9 +1,4 @@
-import {
-  getInitialConversion,
-  GET_INITIAL_CONVERSION,
-  changeCurrencyAmount,
-  CHANGE_CURRENCY_AMOUNT,
-} from '../currencies';
+import { getInitialConversion, changeCurrencyAmount } from '../currencies';
 
 it('create a GET_INITIAL_CONVERSION action', () => {
   expect(getInitialConversion()).toMatchSnapshot();
